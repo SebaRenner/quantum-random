@@ -3,8 +3,20 @@ namespace QuantumRandom {
 
     @EntryPoint()
     operation RunUnitTests() : Unit {
+        TestGenerateNRandomBits_5Bits();
         TestResultArrayToInt_AllZeros();
         TestResultArrayToInt_ZeroOneZero();
+    }
+
+    operation TestGenerateNRandomBits_5Bits(): Unit {
+        // Arrange
+        let nBits = 5;
+
+        // Act
+        let result = GenerateNRandomBits(nBits);
+
+        // Assert
+        Fact(Length(result) == nBits, "TestGenerateNRandomBits_5Bits failed");
     }
 
     function TestResultArrayToInt_AllZeros() : Unit {
@@ -43,5 +55,21 @@ namespace QuantumRandom {
         }
 
         return number;
+    }
+
+    operation GenerateNRandomBits(nBits : Int) : Result[] {
+        use qubits = Qubit[nBits];
+
+        // Apply Hadamard transfomation on each qubit to set it into superposition.
+        for qubit in qubits {
+            H(qubit);
+        }
+
+        // Measure each qubit in the Z basis and reset them 
+        mutable results = [];
+        for qubit in qubits {
+            set results += [MResetZ(qubit)];
+        }
+        return results;
     }
 }
