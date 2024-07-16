@@ -26,7 +26,7 @@ namespace QuantumRandom {
         return results;
     }
 
-    operation ResultArrayToInt(results : Result[]): Int {
+    function ResultArrayToInt(results : Result[]): Int {
         let nBits = Length(results);
 
         mutable number = 0;
