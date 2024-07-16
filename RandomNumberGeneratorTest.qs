@@ -2,7 +2,7 @@ namespace QuantumRandom {
     open Microsoft.Quantum.Diagnostics;
 
     @EntryPoint()
-    operation Main() : Unit {
+    operation RunUnitTests() : Unit {
         TestResultArrayToInt_AllZeros();
         TestResultArrayToInt_ZeroOneZero();
     }
