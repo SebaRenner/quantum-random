@@ -1,1 +1,18 @@
-{}
+{
+    "author": "SebaRenner",
+    "license": "MIT",
+    "lints": [
+        {
+          "lint": "needlessParens",
+          "level": "warn"
+        },
+        {
+          "lint": "redundantSemicolons",
+          "level": "warn"
+        },
+        {
+          "lint": "divisionByZero",
+          "level": "error"
+        }
+      ]
+}
