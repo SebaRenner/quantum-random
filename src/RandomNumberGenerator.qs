@@ -3,9 +3,7 @@ namespace QuantumRandom {
     open Microsoft.Quantum.Measurement;
     open Microsoft.Quantum.Intrinsic;
 
-    @EntryPoint()
-    operation Main() : Int {
-        let nBits = 5;
+    operation GenerateRandomNumber(nBits : Int) : Int {
         let randomBits = GenerateNRandomBits(nBits);
         return ResultArrayToInt(randomBits);
     }

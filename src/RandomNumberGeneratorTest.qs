@@ -1,10 +1,23 @@
 namespace QuantumRandom {
     open Microsoft.Quantum.Diagnostics;
 
+    @EntryPoint()
     operation RunUnitTests() : Unit {
+        TestGenerateRandomNumber_WithinRange();
         TestGenerateNRandomBits_5Bits();
         TestResultArrayToInt_AllZeros();
         TestResultArrayToInt_ZeroOneZero();
+    }
+
+    operation TestGenerateRandomNumber_WithinRange(): Unit {
+        // Arrange
+        let nBits = 5;
+
+        // Act
+        let randomNumber = GenerateRandomNumber(5);
+
+        // Assert
+        Fact(randomNumber >= 0 and randomNumber <= 31, "TestGenerateRandomNumber_WithinRange failed");
     }
 
     operation TestGenerateNRandomBits_5Bits(): Unit {
